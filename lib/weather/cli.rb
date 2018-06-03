@@ -12,8 +12,21 @@ module Weather
     end
 
     def start
-      city = TimeAndDate::CitiesClient.choose
+      search_phrase = ask_for_city
+      city = TimeAndDate::SearchClient.search(search_phrase)
       TimeAndDate::CityWeatherClient.display_weather_for(city)
+    rescue SystemExit, Interrupt
+      puts
+      puts ("=-" * (`tput cols`.strip.to_i / 2)).red.bold
+      puts "Manually cancelled.".red.bold
+      puts "Alright then. Goodbye!".yellow.bold
+      exit
+    end
+    
+    def ask_for_city
+      puts "What city's weather would you like to know?".yellow.bold
+      print "City: ".yellow.bold
+      gets.chomp
     end
 
   end

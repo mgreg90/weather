@@ -7,10 +7,17 @@ module Weather
       URL = "http://timeanddate.com"
       
       def self.display_weather_for(city)
+<<<<<<< HEAD
         new(city).display_weather
       end
       
       def display_weather
+=======
+        new(city).display_weather_for
+      end
+      
+      def display_weather_for
+>>>>>>> 7b0f2e3... Finished v1
         nokogiri
         system("clear") || system("cls")
         puts ("-=" * (`tput cols`.to_i / 2)).green.bold

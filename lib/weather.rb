@@ -1,5 +1,13 @@
-require "weather/version"
+require "httparty"
+require "nokogiri"
+require "colorize"
+
+require_relative "weather/cli"
+require_relative "weather/time_and_date"
+require_relative "weather/version"
 
 module Weather
-  # Your code goes here...
+  def self.start
+    Cli.start
+  end
 end
